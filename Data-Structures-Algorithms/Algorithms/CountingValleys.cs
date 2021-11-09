@@ -7,6 +7,7 @@ namespace Data_Structures_Algorithms.Algorithms
     {
         public void Test()
         {
+            //D are steps down and U are steps up
             int result = countingValleys("DDUUDDUDUUUD");
             Console.WriteLine(result);
         }
