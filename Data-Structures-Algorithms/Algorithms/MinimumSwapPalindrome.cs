@@ -10,56 +10,46 @@ namespace Data_Structures_Algorithms.Algorithms
             Console.WriteLine(MinimumSwap(input));
         }
 
-        static int MinimumSwap(string input)
+        static int MinimumSwap(string s)
         {
-            var arr = input.ToCharArray();
-            int count = 0;
-            int length = input.Length;
-            // A loop which run in half
-            // string from starting
-            for (int i = 0; i < length / 2; i++)
+            var count = 0;
+            var l = 0;
+            var r = s.Length - 1;
+            var sb = new StringBuilder(s);
+            var skip = 0;
+            while (l < r)
             {
-                int left = i;
-                int right = length - 1 - i;
-                // A loop which run from
-                // right pointer to left pointer
-                while (left < right)
+                var leftChar = sb[l];
+                var temp = r;
+                while (l < temp && leftChar != sb[temp])
                 {
-                    // if both char same
-                    // then break the loop
-                    // if not same then we
-                    // have to move right
-                    // pointer to one step
-                    // left
-                    if (arr[left] == arr[right]) 
-                        break;
-                    else 
-                        right--;
+                    temp--;
                 }
-
-                // it denotes both pointer at
-                // same position and we don't
-                // have sufficient char to make
-                // palindrome string
-                if (left == right) 
-                    return -1;
-                else
+                if (l == temp)
                 {
-                    for (int j = right; j < length - 1 - left; j++)
+                    if (s.Length % 2 == 0)
                     {
-                        AdjacentSwap(arr, j);
-                        count++;
+                        return -1;
                     }
+                    else
+                    {
+                        if (skip == 1)
+                        {
+                            return -1;
+                        }
+                        skip = 1;
+                        count = count + (s.Length / 2) - l;
+                        l++;
+                    }
+                    continue;
                 }
+                count = count + r - temp;
+                sb.Remove(temp,1);
+                sb.Insert(r, leftChar);
+                r--;
+                l++;
             }
-            return count;
-        }
-
-        static void AdjacentSwap(char[] arr, int i)
-        {
-            char temp = arr[i];
-            arr[i] = arr[i + 1];
-            arr[i + 1] = temp;
+            return count; 
         }
     }
 }
