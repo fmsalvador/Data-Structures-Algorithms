@@ -5,5 +5,3 @@ https://www.geeksforgeeks.org/tree-traversals-inorder-preorder-and-postorder
 https://www.geeksforgeeks.org/level-order-tree-traversal  
 https://www.dotnetforall.com/depth-first-search-algorithm-dfs-csharp  
 https://www.koderdojo.com/blog/breadth-first-search-and-shortest-path-in-csharp-and-net-core  
-https://jaydeepwise.medium.com/count-minimum-swap-to-make-string-palindrome-2e2f19db2533  
-https://logicmojo.com/minimum-swaps-to-make-palindrome  
