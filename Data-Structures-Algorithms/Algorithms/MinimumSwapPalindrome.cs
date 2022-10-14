@@ -17,7 +17,6 @@ namespace Data_Structures_Algorithms.Algorithms
             var end = s.Length - 1;
             char[] ch = s.ToCharArray();
 
-
             if (CanFormPalindrome(s) == false)
                 return -1;
 
@@ -27,8 +26,9 @@ namespace Data_Structures_Algorithms.Algorithms
                 if (ch[firstPointer] == ch[end])
                 {
                     Console.WriteLine($"First pointer ({ch[firstPointer]}) is equal to the last ({ch[end]}) ");
-                    firstPointer++;
-                    end--;
+                    //The chars are the same in the index pointers
+                    firstPointer++; // first char will remain in the same index, so it will be ignored 
+                    end--; // last char will remain in the same index so it will be ignored 
 
                     if (firstPointer < end)
                         Console.WriteLine($"Nothing happens. First pointer is now index {firstPointer} and second pointer is index {end}");
@@ -39,20 +39,20 @@ namespace Data_Structures_Algorithms.Algorithms
                 while (ch[firstPointer] != ch[secondPointer])
                 {
                     Console.WriteLine($"First pointer ({ch[firstPointer]}) in the index {firstPointer} is different to second pointer({ch[secondPointer]}) in the index {secondPointer}, so the second pointer will jump to index {secondPointer - 1}");
-                    secondPointer--;
+                    secondPointer--;//decreasing until find the same chars between the two pointers
                 }
 
 
-                if (firstPointer == secondPointer)
+                if (firstPointer == secondPointer)//If both reach the same index, swap the chars so it never get stucked in a infinite loop
                 {
-                    Swap(ch, secondPointer, secondPointer + 1); // Change one char with the secondPointermost one
+                    Swap(ch, secondPointer, secondPointer + 1); // Change one char with the rightmost one
                     ans++;
                 }
                 else
                 {
                     while (secondPointer < end)
                     {
-                        Swap(ch, secondPointer, secondPointer + 1); // Change one char with the secondPointermost one
+                        Swap(ch, secondPointer, secondPointer + 1); // Change one char with the rightmost one
                         ans++;
                         secondPointer++;
                     }
