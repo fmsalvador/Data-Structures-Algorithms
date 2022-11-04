@@ -2,15 +2,15 @@ using System;
 
 namespace Data_Structures_Algorithms.Algorithms
 {
-    class MinimumSwapPalindrome
+    public class MinimumSwapPalindrome
     {
-        static void Main(string[] args)
+        public void Test()
         {
-            var string = "001010";
-            Console.WriteLine(MinMovesToMakePalindrome(string));
+            var str = "001010";
+            Console.WriteLine("Minimum of moves: " + MinMovesToMakePalindrome(str));
         }
 
-        static int MinMovesToMakePalindrome(String s)
+        private static int MinMovesToMakePalindrome(String s)
         {
             var ans = 0;
             var firstPointer = 0;
