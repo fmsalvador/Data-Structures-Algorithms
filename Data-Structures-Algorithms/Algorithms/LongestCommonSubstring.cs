@@ -6,6 +6,7 @@ namespace Data_Structures_Algorithms.Algorithms
     {
         static String X, Y;
 
+        //Dynamic Programming
         public void Test()
         {
             int n, m;
