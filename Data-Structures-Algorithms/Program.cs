@@ -7,7 +7,7 @@ namespace data_structure_algorithms
     {
         static void Main(string[] args)
         {
-            new BuyAndSellStockWithCooldown().Test();
+            new ClimbingStairs().Test();
         }
     }
 }
