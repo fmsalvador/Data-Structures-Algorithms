@@ -8,9 +8,11 @@ namespace Data_Structures_Algorithms.Data_Structures
     {
         public void Test()
         {
-            TreeNode node = new TreeNode(2);
-            node.left = new TreeNode(1);
-            node.right = new TreeNode(3);
+            TreeNode node = new TreeNode(2)
+            {
+                left = new TreeNode(1),
+                right = new TreeNode(3)
+            };
             Console.WriteLine("Original tree");
             PrintTree(node);
             InvertTree(node);
