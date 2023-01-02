@@ -6,4 +6,14 @@
     <RootNamespace>Data_Structures_Algorithms</RootNamespace>
   </PropertyGroup>
 
+  <ItemGroup>
+    <Folder Include="Algorithms\Merge\" />
+    <Folder Include="Algorithms\Greedy\" />
+    <Folder Include="Algorithms\DivideAndConquer\" />
+    <Folder Include="Algorithms\BitManipulation\" />
+    <Folder Include="Algorithms\Recursion\" />
+    <Folder Include="Data-Structures\SubSets\" />
+    <Folder Include="Data-Structures\TwoHeaps\" />
+  </ItemGroup>
+
 </Project>

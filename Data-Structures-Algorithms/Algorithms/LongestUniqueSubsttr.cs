@@ -8,10 +8,10 @@ namespace Data_Structures_Algorithms.Algorithms
         {
             var str = "geeksforgeeks";
             Console.WriteLine("The input string is " + str);
-            var len = countLongestUniqueSubsttr(str);
+            var len = CountLongestUniqueSubsttr(str);
             Console.WriteLine("The length of the longest " + "non-repeating character " + "substring is " + len.ToString());
         }
-        public static int countLongestUniqueSubsttr(String str)
+        public static int CountLongestUniqueSubsttr(String str)
         {
             var test = "";
 

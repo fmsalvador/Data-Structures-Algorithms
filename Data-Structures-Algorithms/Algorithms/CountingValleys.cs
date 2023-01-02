@@ -8,17 +8,17 @@ namespace Data_Structures_Algorithms.Algorithms
         public void Test()
         {
             //D are steps down and U are steps up
-            int result = countingValleys("DDUUDDUDUUUD");
+            int result = ReturnNumberOfValleys("DDUUDDUDUUUD");
             Console.WriteLine(result);
         }
 
-        public static int countingValleys(string path)
+        public static int ReturnNumberOfValleys(string path)
         {
             var numberOfValleys = 0;
             var stepUp = 'U';
             var listOfUps = new List<int>();
             var listOfDowns = new List<int>();
-            var descending = false;
+            bool descending;
 
             foreach (char step in path)
             {

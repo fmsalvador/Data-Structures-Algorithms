@@ -17,12 +17,12 @@ namespace Data_Structures_Algorithms.Algorithms
               10, 20, 20, 10, 10, 30, 50, 10, 20
             };
 
-            int result = sockMerchant(n, ar);
+            int result = SockMerchant(n, ar);
 
             Console.WriteLine(result);
         }
 
-        public static int sockMerchant(int n, List<int> ar)
+        public static int SockMerchant(int n, List<int> ar)
         {
             List<int> listPairs = new List<int>();
             List<int> numberWithoutPairs = new List<int>();

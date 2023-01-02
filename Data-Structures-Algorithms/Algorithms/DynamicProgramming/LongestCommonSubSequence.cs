@@ -8,7 +8,6 @@ namespace Data_Structures_Algorithms.Algorithms
     {
         public void Test()
         {
-
             String s1 = "fish";
             String s2 = "fosh";
 
@@ -17,9 +16,9 @@ namespace Data_Structures_Algorithms.Algorithms
             int m = X.Length;
             int n = Y.Length;
 
-            Console.Write("Length of LCS is" + " " + lcs(X, Y, m, n));
+            Console.Write("Length of LCS is" + " " + LCS(X, Y, m, n));
         }
-        static int lcs(char[] X, char[] Y, int m, int n)
+        static int LCS(char[] X, char[] Y, int m, int n)
         {
             int[,] L = new int[m + 1, n + 1];
 
@@ -36,14 +35,14 @@ namespace Data_Structures_Algorithms.Algorithms
                     else if (X[i - 1] == Y[j - 1])
                         L[i, j] = L[i - 1, j - 1] + 1;
                     else
-                        L[i, j] = max(L[i - 1, j], L[i, j - 1]);
+                        L[i, j] = Max(L[i - 1, j], L[i, j - 1]);
                 }
             }
             return L[m, n];
         }
 
         /* Utility function to get max of 2 integers */
-        static int max(int a, int b)
+        static int Max(int a, int b)
         {
             return (a > b) ? a : b;
         }
