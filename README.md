@@ -1,6 +1,9 @@
 # Data-Structures-Algorithms
 
 References:  
+https://seanprashad.com/leetcode-patterns  
+
+
 https://www.geeksforgeeks.org/tree-traversals-inorder-preorder-and-postorder  
 https://www.geeksforgeeks.org/level-order-tree-traversal  
 https://www.geeksforgeeks.org/detect-loop-in-a-linked-list  
