@@ -2,6 +2,7 @@
 
 References:  
 https://seanprashad.com/leetcode-patterns  
+https://hackernoon.com/14-patterns-to-ace-any-coding-interview-question-c5bb3357f6ed  
 
 
 https://www.geeksforgeeks.org/tree-traversals-inorder-preorder-and-postorder  
