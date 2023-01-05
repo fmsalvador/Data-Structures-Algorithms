@@ -8,39 +8,37 @@ namespace Data_Structures_Algorithms.Algorithms
     {
         public void Test()
         {
-            int[] arr = { 1, 4, 2, 10, 2, 3, 1, 0, 20 };
+            int[] arr = { 1, 4, 2, 10, 2, 3, 1, 0, 20 }; //Max sum is 20 + 0 + 1 + 3
             int k = 4;
-            int n = arr.Length;
-            Console.WriteLine(MaxSum(arr, n, k));
+            Console.WriteLine(MaxSum(arr, k));
         }
 
-        static int MaxSum(int[] arr, int n, int k)
+        static int MaxSum(int[] arr, int k)
         {
-
-            // n must be greater
-            if (n < k)
+            if (arr.Length < k)
             {
                 Console.WriteLine("Invalid");
                 return -1;
             }
 
             // Compute sum of first window of size k
-            int max_sum = 0;
+            int maxSum = 0;
+
             for (int i = 0; i < k; i++)
-                max_sum += arr[i];
+                maxSum += arr[i];
 
             // Compute sums of remaining windows by
             // removing first element of previous
             // window and adding last element of
             // current window.
-            int window_sum = max_sum;
-            for (int i = k; i < n; i++)
+            int windowSum = maxSum;
+            for (int i = k; i < arr.Length; i++)
             {
-                window_sum += arr[i] - arr[i - k];
-                max_sum = Math.Max(max_sum, window_sum);
+                windowSum += arr[i] - arr[i - k]; //arr[i - k] is the first element of previous window
+                maxSum = Math.Max(maxSum, windowSum);
             }
 
-            return max_sum;
+            return maxSum;
         }
 
         //Complexity is O(n).

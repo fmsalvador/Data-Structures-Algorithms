@@ -6,7 +6,7 @@ namespace Data_Structures_Algorithms.Algorithms
 {
     public class FruitIntoBasket
     {
-        //Sliding window concept, simply with two pointers (last_fruit && second_last_fruit)
+        //Sliding window concept, simply with two pointers (last fruit && second last fruit)
         public void Test()
         {
             //int[] trees = { 1, 2, 3, 2, 2 }; //Pick 4. We can pick from trees [2,3,2,2].
@@ -17,11 +17,11 @@ namespace Data_Structures_Algorithms.Algorithms
 
         public int TotalFruit(int[] tree)
         {
-            var last_fruit = -1;
+            var lastFruit = -1;
             // the last fruit which we saw
-            var second_last_fruit = -1;
+            var secondLastFruit = -1;
             // the second last fruit which we saw
-            var last_fruit_count = 0;
+            var lastFruitCount = 0;
             // the number of last fruits present
             var current_max = 0;
             // current count of the two types of fruits
@@ -30,29 +30,22 @@ namespace Data_Structures_Algorithms.Algorithms
             foreach (int fruit in tree)
             {
                 // if the current fruit is same as last fruit and second last fruit we increment the count
-                if (fruit == last_fruit || fruit == second_last_fruit)
-                {
+                if (fruit == lastFruit || fruit == secondLastFruit)
                     current_max++;
-                }
                 else
-                {
-                    current_max = last_fruit_count + 1;
-                }
+                    current_max = lastFruitCount + 1;
                 // here we check for the last fruit count
-                if (fruit == last_fruit)
-                {
-                    last_fruit_count++;
-                }
+                if (fruit == lastFruit)
+                    lastFruitCount++;
                 else
-                {
-                    last_fruit_count = 1;
-                }
+                    lastFruitCount = 1;
+
                 // if a new fruit is found in the list then we change second last fruit to
                 // last fruit and current fruit to the last fruit
-                if (fruit != last_fruit)
+                if (fruit != lastFruit)
                 {
-                    second_last_fruit = last_fruit;
-                    last_fruit = fruit;
+                    secondLastFruit = lastFruit;
+                    lastFruit = fruit;
                 }
                 max = Math.Max(max,current_max);
             }
