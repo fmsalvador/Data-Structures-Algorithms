@@ -19,8 +19,8 @@ namespace Data_Structures_Algorithms.Algorithms
 
             var stopwatch = new Stopwatch();
             stopwatch.Start();
-            //var numberOfMinimumSubStr = FindMinSubStr("GAAATAAA");//5
-            var numberOfMinimumSubStr = FindMinSubStr("TGATGCCGTCCCCTCAACTTGAGTGCTCCTAATGCGTTGC");//5
+            var numberOfMinimumSubStr = FindMinSubStr("GAAATAAA");//5
+            //var numberOfMinimumSubStr = FindMinSubStr("TGATGCCGTCCCCTCAACTTGAGTGCTCCTAATGCGTTGC");//5
 
             Console.WriteLine(numberOfMinimumSubStr);
         }
@@ -28,7 +28,7 @@ namespace Data_Structures_Algorithms.Algorithms
 
         public static int FindMinSubStr(string gene)
         {
-            var count = new Dictionary<char, int>
+            var charCounts = new Dictionary<char, int>
             {
                 { 'A', 0 },
                 { 'C', 0 },
@@ -38,38 +38,62 @@ namespace Data_Structures_Algorithms.Algorithms
 
             for (int i = 0; i < gene.Length; i++)//Counting the number of each chars in the string
             {
-                count[gene[i]]++;
+                charCounts[gene[i]]++;
             }
 
-            int maxOfAllowedChars = gene.Length / 4;
-            int j = 0;
-            int minLength = gene.Length;
+            char nucleotide;
+            var geneLength = gene.Length;
+            var maxNucleotideCount = geneLength / 4;
 
-            for (int i = 0; i < gene.Length; i++)
+            // "Extras" are any count that is over max_nucleotide_count
+            if (!ValidateIfCharCountIsValid(charCounts, maxNucleotideCount))
             {
-                Console.WriteLine("First pointer: " + i);
-                while (count['A'] > maxOfAllowedChars || count['T'] > maxOfAllowedChars || count['G'] > maxOfAllowedChars || count['C'] > maxOfAllowedChars)
-                {
-                    if (j == gene.Length)
-                    {
-                        return minLength;
-                    }
-
-                    count[gene[j]]--;//Decrease until all chars have less thant maxOfAllowedChars
-                    j++;
-                    Console.WriteLine("Second pointer: " + j);
-                }
-
-
-                //Second pointer (j) will increase to make sure all the string will be iterated
-                Console.WriteLine(j - i);
-                minLength = Math.Min(minLength, j - i); // The result is the second pointer - the first pointer until the second pointer reach the gene length
-                count[gene[i]]++;//Increase just to keep the logic going until the whole string is iterated (j == gene.Length)
+                return 0;
             }
 
-            return minLength;
+            // find smallest subset of string containing all extras
+            // using moving window
+            var rightRunner = 0;
+            var leftRunner = 0;
+            var minSubstringLength = int.MaxValue;
 
-            //Two pointer solution O(n^2)
+            while (rightRunner < geneLength)
+            {
+                // O(n)
+                // if extras still available...
+                while (rightRunner < geneLength && ValidateIfCharCountIsValid(charCounts, maxNucleotideCount))
+                {
+                    // move right runner and remove nucleotide from all_counts
+                    nucleotide = gene[rightRunner];
+                    charCounts[nucleotide] -= 1;
+                    rightRunner += 1;
+                }
+                while (leftRunner < geneLength && !ValidateIfCharCountIsValid(charCounts, maxNucleotideCount))
+                {
+                    // no extras available => window may contain best substring
+                    // move left runner and add nucleotide to all_counts
+                    nucleotide = gene[leftRunner];
+                    charCounts[nucleotide] += 1;
+                    leftRunner += 1;
+                }
+                minSubstringLength = Math.Min(minSubstringLength, rightRunner - leftRunner + 1);
+            }
+            return minSubstringLength;
+        }
+
+        public static bool ValidateIfCharCountIsValid(Dictionary<char, int> charCounts, int maxNucleotideCount)
+        {
+            // loop through all counts
+            foreach (var counts in charCounts.Values)
+            {
+                // if any count is greater than max_nucleotide_count, return True
+                if (counts > maxNucleotideCount)
+                {
+                    return true;
+                }
+            }
+            // if got past loop, no extras found => return False
+            return false;
         }
     }
 }

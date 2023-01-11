@@ -8,11 +8,7 @@
 
   <ItemGroup>
     <Folder Include="Algorithms\BitManipulation\" />
-    <Folder Include="Algorithms\Merge\" />
-    <Folder Include="Algorithms\DivideAndConquer\" />
-    <Folder Include="Algorithms\Recursion\" />
     <Folder Include="Data-Structures\BloomFilter\" />
-    <Folder Include="Data-Structures\Tries\" />
     <Folder Include="Data-Structures\SubSets\" />
   </ItemGroup>
 
