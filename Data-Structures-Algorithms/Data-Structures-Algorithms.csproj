@@ -8,7 +8,6 @@
 
   <ItemGroup>
     <Folder Include="Algorithms\BitManipulation\" />
-    <Folder Include="Data-Structures\BloomFilter\" />
     <Folder Include="Data-Structures\SubSets\" />
   </ItemGroup>
 
