@@ -7,7 +7,8 @@ namespace data_structure_algorithms
     {
         static void Main(string[] args)
         {
-            new BloomFilterImpl2().Test();
+            new HyperLogLog<int>().TestHyperLogLog();
+            new HyperLogLog<int>().TestHyperLogLogMerge();
         }
     }
 }
