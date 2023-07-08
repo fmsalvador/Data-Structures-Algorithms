@@ -18,3 +18,5 @@ https://www.geeksforgeeks.org/introduction-to-trie-data-structure-and-algorithm-
 https://www.dotnetforall.com/depth-first-search-algorithm-dfs-csharp  
 https://www.koderdojo.com/blog/breadth-first-search-and-shortest-path-in-csharp-and-net-core  
 https://www.youtube.com/@jayatitiwari444  
+https://blog.ktfa-software.com/p/2023-05-bloom-filter-csharp/  
+https://benwendt.ca/articles/a-bloom-filter-in-c/
