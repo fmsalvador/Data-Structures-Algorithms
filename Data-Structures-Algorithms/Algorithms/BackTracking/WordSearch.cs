@@ -1,11 +1,8 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
 
 namespace Data_Structures_Algorithms.Algorithms
 {
-    // Backtracking Recursion
+    //Backtracking Recursion with Breadth First Search
     internal class WordSearch
     {
         //O(MxN)
@@ -19,6 +16,11 @@ namespace Data_Structures_Algorithms.Algorithms
             var result1 = exist(board, "ABCB"); //False
             var result2 = exist(board, "SEE"); //True
             var result3 = exist(board, "ABCCED"); //True
+
+            Console.WriteLine(result1);
+            Console.WriteLine(result2);
+            Console.WriteLine(result3);
+
         }
 
         bool[][] visited;
@@ -34,7 +36,7 @@ namespace Data_Structures_Algorithms.Algorithms
             {
                 for (int j = 0; j < board[i].Length; j++)
                 {
-                    if (board[i][j] == word[0] && searchWord(i, j, 0, word, board))
+                    if (board[i][j] == word[0] && SearchWord(i, j, 0, word, board))
                     {
                         return true;
                     }
@@ -43,7 +45,7 @@ namespace Data_Structures_Algorithms.Algorithms
             return false;
         }
 
-        private bool searchWord(int i, int j, int index, string word, char[][] board)
+        private bool SearchWord(int i, int j, int index, string word, char[][] board)
         {
             if (index == word.Length) 
                 return true;
@@ -55,10 +57,10 @@ namespace Data_Structures_Algorithms.Algorithms
             visited[i][j] = true;
 
             if (
-                searchWord(i, j + 1, index + 1, word, board) ||
-                searchWord(i, j - 1, index + 1, word, board) ||
-                searchWord(i + 1, j, index + 1, word, board) ||
-                searchWord(i - 1, j, index + 1, word, board)
+                SearchWord(i, j + 1, index + 1, word, board) ||
+                SearchWord(i, j - 1, index + 1, word, board) ||
+                SearchWord(i + 1, j, index + 1, word, board) ||
+                SearchWord(i - 1, j, index + 1, word, board)
                 )
             {
                 return true;
@@ -74,7 +76,7 @@ namespace Data_Structures_Algorithms.Algorithms
             {
                 for (int j = 0; j < board[0].Length; j++)
                 {
-                    if (board[i][j] == word[0] && this.dfs(board, i, j, 0, word))
+                    if (board[i][j] == word[0] && this.DFS(board, i, j, 0, word))
                     {
                         return true;
                     }
@@ -82,7 +84,7 @@ namespace Data_Structures_Algorithms.Algorithms
             }
             return false;
         }
-        public bool dfs(char[][] board, int i, int j, int count, String word)
+        public bool DFS(char[][] board, int i, int j, int count, String word)
         {
             if (count == word.Length)
             {
@@ -94,7 +96,7 @@ namespace Data_Structures_Algorithms.Algorithms
             }
             var temp = board[i][j];
             board[i][j] = ' ';
-            var found = this.dfs(board, i + 1, j, count + 1, word) || this.dfs(board, i - 1, j, count + 1, word) || this.dfs(board, i, j + 1, count + 1, word) || this.dfs(board, i, j - 1, count + 1, word);
+            var found = this.DFS(board, i + 1, j, count + 1, word) || this.DFS(board, i - 1, j, count + 1, word) || this.DFS(board, i, j + 1, count + 1, word) || this.DFS(board, i, j - 1, count + 1, word);
             board[i][j] = temp;
             return found;
         }
