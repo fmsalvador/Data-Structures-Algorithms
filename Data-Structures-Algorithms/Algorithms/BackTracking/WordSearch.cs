@@ -56,12 +56,10 @@ namespace Data_Structures_Algorithms.Algorithms
 
             visited[i][j] = true;
 
-            if (
-                SearchWord(i, j + 1, index + 1, word, board) ||
+            if (SearchWord(i, j + 1, index + 1, word, board) ||
                 SearchWord(i, j - 1, index + 1, word, board) ||
                 SearchWord(i + 1, j, index + 1, word, board) ||
-                SearchWord(i - 1, j, index + 1, word, board)
-                )
+                SearchWord(i - 1, j, index + 1, word, board))
             {
                 return true;
             }
