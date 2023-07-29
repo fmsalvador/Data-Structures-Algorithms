@@ -56,10 +56,10 @@ namespace Data_Structures_Algorithms.Algorithms
             Console.ReadLine();
         }
 
-        private void FindSubsets(int i, List<int> tmp, List<List<int>> answer, int[] inputArrList)
+        private void FindSubsets(int index, List<int> tmp, List<List<int>> answer, int[] inputArrList)
         {
             //Base case  
-            if (i == inputArrList.Count())
+            if (index == inputArrList.Count())
             {
                 //Including the generated current subset (which is non empty) to the 2D list answer  
                 if (tmp.Count() > 0)
@@ -71,11 +71,11 @@ namespace Data_Structures_Algorithms.Algorithms
 
             //Generating the subset that has array element inside it  
             List<int> tmp1 = new List<int>(tmp);
-            tmp1.Add(inputArrList[i]);
-            FindSubsets(i + 1, tmp1, answer, inputArrList);
+            tmp1.Add(inputArrList[index]);
+            FindSubsets(index + 1, tmp1, answer, inputArrList);
 
             //Generating the subset that will not contain the array element   
-            FindSubsets(i + 1, tmp, answer, inputArrList);
+            FindSubsets(index + 1, tmp, answer, inputArrList);
         }
     }
 }
