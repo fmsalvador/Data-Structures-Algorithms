@@ -1,11 +1,10 @@
 ﻿using System;
-using System.Collections;
 using System.Collections.Generic;
 
 namespace Data_Structures_Algorithms.Data_Structures
 {
     //https://github.com/joaoportela/CircularBuffer-CSharp
-    public class CircularBuffer<T> : IEnumerable<T> //T accepts any kind of type/data
+    public class CircularBuffer<T> //T accepts any kind of type/data
     {
         public CircularBuffer() { }
         public void Test()
@@ -48,7 +47,6 @@ namespace Data_Structures_Algorithms.Data_Structures
             Console.WriteLine($"{{{String.Join(",", buffer.ToArray())}}}");
         }
 
-
         private readonly T[] _buffer;
 
         /// <summary>
@@ -70,10 +68,7 @@ namespace Data_Structures_Algorithms.Data_Structures
         /// <param name='capacity'>
         /// Buffer capacity. Must be positive.
         /// </param>
-        public CircularBuffer(int capacity)
-            : this(capacity, new T[] { })
-        {
-        }
+        public CircularBuffer(int capacity) : this(capacity, new T[] { }) { }
 
         /// <summary>
         /// Initializes a new instance of the <see cref="CircularBuffer{T}"/> class.
@@ -248,14 +243,13 @@ namespace Data_Structures_Algorithms.Data_Structures
         /// <summary>
         /// Clears the contents of the array. Size = 0, Capacity is unchanged.
         /// </summary>
-        /// <exception cref="NotImplementedException"></exception>
         public void Clear()
         {
             // to clear we just reset everything.
             _start = 0;
             _end = 0;
             _size = 0;
-            System.Array.Clear(_buffer, 0, _buffer.Length);
+            Array.Clear(_buffer, 0, _buffer.Length);
         }
 
         /// <summary>
@@ -271,7 +265,7 @@ namespace Data_Structures_Algorithms.Data_Structures
             var segments = ToArraySegments();
             foreach (ArraySegment<T> segment in segments)
             {
-                System.Array.Copy(segment.Array, segment.Offset, newArray, newArrayOffset, segment.Count);
+                Array.Copy(segment.Array, segment.Offset, newArray, newArrayOffset, segment.Count);
                 newArrayOffset += segment.Count;
             }
             return newArray;
@@ -294,28 +288,6 @@ namespace Data_Structures_Algorithms.Data_Structures
             return new[] { ArrayOne(), ArrayTwo() };
         }
 
-        #region IEnumerable<T> implementation
-        /// <summary>
-        /// Returns an enumerator that iterates through this buffer.
-        /// </summary>
-        /// <returns>An enumerator that can be used to iterate this collection.</returns>
-        public IEnumerator<T> GetEnumerator()
-        {
-            var segments = ToArraySegments();
-            foreach (ArraySegment<T> segment in segments)
-            {
-                for (int i = 0; i < segment.Count; i++)
-                {
-                    yield return segment.Array[segment.Offset + i];
-                }
-            }
-        }
-        #endregion
-
-        IEnumerator IEnumerable.GetEnumerator()
-        {
-            return GetEnumerator();
-        }
 
         private void ThrowIfEmpty(string message = "Cannot access an empty buffer.")
         {
@@ -360,10 +332,8 @@ namespace Data_Structures_Algorithms.Data_Structures
             return _start + (index < (Capacity - _start) ? index : index - Capacity);
         }
 
-        #region Array items easy access.
         // The array is composed by at most two non-contiguous segments, 
         // the next two methods allow easy access to those.
-
         private ArraySegment<T> ArrayOne()
         {
             if (IsEmpty)
@@ -395,6 +365,5 @@ namespace Data_Structures_Algorithms.Data_Structures
                 return new ArraySegment<T>(_buffer, 0, _end);
             }
         }
-        #endregion
     }
 }
