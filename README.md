@@ -4,6 +4,7 @@ References:
 https://seanprashad.com/leetcode-patterns  
 https://hackernoon.com/14-patterns-to-ace-any-coding-interview-question-c5bb3357f6ed  
 https://github.com/egonSchiele/grokking_algorithms  
+https://elemarjr.com/clube-de-estudos/grupos/algoritmos-e-estruturas-de-dados/
 
 
 https://www.geeksforgeeks.org/tree-traversals-inorder-preorder-and-postorder  
