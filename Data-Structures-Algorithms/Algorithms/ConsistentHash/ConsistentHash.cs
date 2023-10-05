@@ -4,7 +4,7 @@ using System.Linq;
 using System.Numerics;
 
 
-namespace Data_Structures_Algorithms.Data_Structures
+namespace Data_Structures_Algorithms.Algorithms
 {
 
     //Reference http://www.codeproject.com/Articles/56138/Consistent-hashing
@@ -24,13 +24,13 @@ namespace Data_Structures_Algorithms.Data_Structures
 
             var consistentHashRouter = new ConsistentHashRouter<ServiceNode>(nodes, 10);
 
-            String requestIP1 = "192.168.0.1";
-            String requestIP2 = "192.168.0.2";
-            String requestIP3 = "192.168.0.3";
-            String requestIP4 = "192.168.0.4";
-            String requestIP5 = "192.168.0.5";
+            string requestIP1 = "192.168.0.1";
+            string requestIP2 = "192.168.0.2";
+            string requestIP3 = "192.168.0.3";
+            string requestIP4 = "192.168.0.4";
+            string requestIP5 = "192.168.0.5";
 
-            List<String> requests = new List<string> { requestIP1, requestIP2, requestIP3, requestIP4, requestIP5 };
+            List<string> requests = new List<string> { requestIP1, requestIP2, requestIP3, requestIP4, requestIP5 };
 
             GoRoute(consistentHashRouter, requests);
 
@@ -44,7 +44,7 @@ namespace Data_Structures_Algorithms.Data_Structures
         }
 
 
-        public void GoRoute(ConsistentHashRouter<ServiceNode> consistentHashRouter, List<String> requestIps)
+        public void GoRoute(ConsistentHashRouter<ServiceNode> consistentHashRouter, List<string> requestIps)
         {
             foreach (var requestIp in requestIps)
             {
@@ -54,23 +54,23 @@ namespace Data_Structures_Algorithms.Data_Structures
 
         public class ServiceNode : NodeMap
         {
-            private String idc;
-            private String ip;
+            private string idc;
+            private string ip;
             private int port;
 
-            public ServiceNode(String idc, String ip, int port)
+            public ServiceNode(string idc, string ip, int port)
             {
                 this.idc = idc;
                 this.ip = ip;
                 this.port = port;
             }
 
-            public String GetKey()
+            public string GetKey()
             {
                 return idc + "-" + ip + ":" + port;
             }
 
-            public override String ToString()
+            public override string ToString()
             {
                 return GetKey();
             }
@@ -106,7 +106,7 @@ namespace Data_Structures_Algorithms.Data_Structures
                 List<BigInteger> nodeKeysToRemove = new List<BigInteger>();
 
 
-                foreach(var key in tempList)
+                foreach (var key in tempList)
                 {
                     VirtualNode<T> virtualNode = ring.GetValueOrDefault(key);
                     if (virtualNode.isVirtualNodeOf(pNode))
@@ -115,7 +115,7 @@ namespace Data_Structures_Algorithms.Data_Structures
                     }
                 }
 
-                foreach(var nodeToRemove in nodeKeysToRemove)
+                foreach (var nodeToRemove in nodeKeysToRemove)
                 {
                     ring.Remove(nodeToRemove);
                 }
@@ -135,16 +135,16 @@ namespace Data_Structures_Algorithms.Data_Structures
             }
 
             //With a specified key, route the nearest Node instance in the current hash ring
-            public T RouteNode(String objectKey)
+            public T RouteNode(string objectKey)
             {
                 if (ring.Count == 0)
-                    return default(T);
+                    return default;
 
                 var hashVal = objectKey.GetHashCode();
                 var listKeys = ring.Keys.OrderBy(o => o).ToList();
                 var tailMap = listKeys.Where(w => w >= hashVal);
 
-                var nodeHashVal = (tailMap != null && tailMap.Count() > 0) ? tailMap.First() : listKeys.First();
+                var nodeHashVal = tailMap != null && tailMap.Count() > 0 ? tailMap.First() : listKeys.First();
                 return ring[nodeHashVal].GetPhysicalNode();
             }
         }
@@ -161,12 +161,12 @@ namespace Data_Structures_Algorithms.Data_Structures
                 this.physicalNode = physicalNode;
             }
 
-            public String GetKey()
+            public string GetKey()
             {
                 return physicalNode.GetKey() + "-" + replicaIndex;
             }
 
-            public Boolean isVirtualNodeOf(T pNode)
+            public bool isVirtualNodeOf(T pNode)
             {
                 return physicalNode.GetKey().Equals(pNode.GetKey());
             }
@@ -179,7 +179,7 @@ namespace Data_Structures_Algorithms.Data_Structures
 
         public interface NodeMap
         {
-            String GetKey();
+            string GetKey();
         }
     }
 }
