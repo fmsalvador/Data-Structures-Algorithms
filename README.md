@@ -1,4 +1,4 @@
-# Data-Structures-Algorithms
+# Implementation of most useful data structures/algorithms patterns, focusing in distributed systems problem solvers and performance with large data
 
 # Implementation References
 https://seanprashad.com/leetcode-patterns  
