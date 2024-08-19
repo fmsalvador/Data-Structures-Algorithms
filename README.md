@@ -9,7 +9,6 @@ https://elemarjr.com/clube-de-estudos/grupos/algoritmos-e-estruturas-de-dados/
 https://www.dotnetforall.com/depth-first-search-algorithm-dfs-csharp  
 https://www.koderdojo.com/blog/breadth-first-search-and-shortest-path-in-csharp-and-net-core  
 https://blog.ktfa-software.com/p/2023-05-bloom-filter-csharp/  
-https://benwendt.ca/articles/a-bloom-filter-in-c/  
 https://www.baeldung.com/java-simulated-annealing-for-traveling-salesman
 
 # Challenges References
