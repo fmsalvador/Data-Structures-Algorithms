@@ -9,7 +9,8 @@ https://elemarjr.com/clube-de-estudos/grupos/algoritmos-e-estruturas-de-dados/
 https://www.dotnetforall.com/depth-first-search-algorithm-dfs-csharp  
 https://www.koderdojo.com/blog/breadth-first-search-and-shortest-path-in-csharp-and-net-core  
 https://blog.ktfa-software.com/p/2023-05-bloom-filter-csharp/  
-https://www.baeldung.com/java-simulated-annealing-for-traveling-salesman
+https://www.baeldung.com/java-simulated-annealing-for-traveling-salesman  
+https://www.danielleskosky.com/largest-rectangle-in-histogram/
 
 # Challenges References
 https://www.geeksforgeeks.org/tree-traversals-inorder-preorder-and-postorder  
